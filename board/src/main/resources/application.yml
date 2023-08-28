@@ -6,8 +6,8 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/db_codingrecipe?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: user_codingrecipe
+    url: jdbc:mysql://localhost:3306/db_jinvvoo?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: user_jinvvoo
     password: 1234
   thymeleaf:
     cache: false
@@ -18,4 +18,4 @@ spring:
     open-in-view: false
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: update    #      create로 하면 실행할떄마다 기존 데이터 삭제됨.
