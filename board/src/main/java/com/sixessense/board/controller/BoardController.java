@@ -3,12 +3,10 @@ package com.sixessense.board.controller;
 import com.sixessense.board.dto.BoardDTO;
 import com.sixessense.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -40,7 +38,19 @@ public class BoardController {
         model.addAttribute("boardList", boardDTOList);
         // 어디로? list로.
         return "list";
+    }
 
+    @GetMapping("/{id}")        // id값만 받아오면 됨.
+    public String findById(@PathVariable Long id, Model model) { //경로상 값 가져올 땐 @사용함
+                                                                // 데이터 담아가야 하니 model 객체 사용
+    /*
+        해당 게시글의 조회수를 하나 올리고
+        게시글 데이터를 가져와서 detail.html에 출력
+     */
+        boardService.updateHits(id);        // 두번의 호출이 발생 (find)
+        BoardDTO boardDTO = boardService.findById(id);  // 두번의 호출이 발생 (힛)
+        model.addAttribute("board", boardDTO);
+        return "detail";
     }
 
 }

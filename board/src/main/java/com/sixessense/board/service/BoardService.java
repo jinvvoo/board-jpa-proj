@@ -6,9 +6,11 @@ import com.sixessense.board.entity.BoardEntity;
 import com.sixessense.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 // DTO -> Entity (Entity Class)
@@ -44,4 +46,26 @@ public class BoardService {
 
         return boardDTOList;    // for문 끝나면 list로 받는다.
     }
+
+    @Transactional      // Jpa 메소드가 아닌 추가된 메소드인 경우 @ 작성 필수.
+    public void updateHits(Long id) {
+        boardRepository.updateHits(id);   //레포에 힛 호출
+
+    }
+
+    @Transactional
+    public BoardDTO findById(Long id) {
+        Optional<BoardEntity> optionalBoardEntity = boardRepository.findById(id);
+        if (optionalBoardEntity.isPresent()) {
+            BoardEntity boardEntity = optionalBoardEntity.get();
+            BoardDTO boardDTO = BoardDTO.toBoardDTO(boardEntity);
+            return boardDTO;
+        } else {
+            return null;
+        }
+    }
+    // repo에 findById
+    // optional 객체로 넘어왔기에 if문으로 get써서 BoardDTO로 변환, 리턴주기
+    // 없으면 null 발생.
+
 }
