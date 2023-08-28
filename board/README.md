@@ -73,7 +73,7 @@ constraint FKcfxqly70ddd02xbou0jxgh4o3
 
 ## mysql DataBase 계정 생성 및 권한 부여 
 ```
-create database db_codingrecipe;
-create user user_codingrecipe@localhost identified by '1234';
-grant all privileges on db_codingrecipe.* to user_codingrecipe@localhost;
+create database db_jinvvoo;
+create user user_jinvvoo@localhost identified by '1234';
+grant all privileges on db_jinvvoo.* to user_jinvvoo@localhost;
 ```
