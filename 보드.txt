@@ -77,6 +77,23 @@
 
 
 =================여기까지 목록 ===============
+
 글조회part
+
+1. 컨트롤러
+두번의 호출 발생  (1) 조회수 (2) findById
+
+2. 서비스
+(1) 조회수 작성하려고 보니 repo
+
+3. repository
+// update board_table set board_hits=board_hits+1 where id=?
+
+4. 서비스
+(1) 조회수 작성 완료
+(2) findById 작성하기
+=================여기까지 조회 ===============
+
+수정part
 
 1. 
