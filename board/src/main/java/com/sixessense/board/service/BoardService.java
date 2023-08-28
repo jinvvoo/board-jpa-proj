@@ -68,4 +68,10 @@ public class BoardService {
     // optional 객체로 넘어왔기에 if문으로 get써서 BoardDTO로 변환, 리턴주기
     // 없으면 null 발생.
 
+
+    public BoardDTO update(BoardDTO boardDTO) {
+        BoardEntity boardEntity = BoardEntity.toUpdateEntity(boardDTO);     // entity 변환작업
+        boardRepository.save(boardEntity);
+        return findById(boardDTO.getId());
+    }
 }
