@@ -1,3 +1,6 @@
+게시판
+작성 part
+
 1. HomeController에서 index 작성 - resource(index.html)
 		: 실행되고 버튼보임. 버튼 누르면 에러.
 2. BoardController에서 save 작성 (get)- resource(save.html) (get post)
@@ -52,3 +55,45 @@
 
 
 
+=================== 여기까지 글작성 =====================
+목록part
+
+1.BoardController 작성. findAll 메소드
+
+2. BoardService에서 findAll 작성
+// repository에서 가져올 땐 거의 대부분 entity로 가져온다.
+// list 형태 entity가 넘어오게 된 것.
+// Entity로 넘어온 이 객체를 우리는 BoardDTO 객체로 옮겨담아서 다시 controller로 return해줘야한다.
+// entity객체를 dto객체로 담아야 하는 시점 -> BoardDTO로 넘어가서 작성
+
+3. BoardDTO로 넘어감
+// entity객체를 dto객체로 담아야 하는 시점 -> BoardDTO로 넘어가서 작성
+
+4. BoardService로 넘어감.
+// DB에서 전체 게시글 데이터를 가져와서 list.html에 보여준다.
+// DB에서 목록 가져옴 -> 객체모델 가져와야한다 -> findAll(Model model) 모델 객체 가져옴
+
+// 게시글 목록이 하나가 아니므로 list<> 사용
+
+
+=================여기까지 목록 ===============
+
+글조회part
+
+1. 컨트롤러
+두번의 호출 발생  (1) 조회수 (2) findById
+
+2. 서비스
+(1) 조회수 작성하려고 보니 repo
+
+3. repository
+// update board_table set board_hits=board_hits+1 where id=?
+
+4. 서비스
+(1) 조회수 작성 완료
+(2) findById 작성하기
+=================여기까지 조회 ===============
+
+수정part
+
+1. 
